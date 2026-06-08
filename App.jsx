@@ -9,6 +9,7 @@ import JyotishProfile from "./src/pages/JyotishProfile/JyotishProfile";
 import JyotishChat from "./src/pages/Consultation/JyotishChat";
 import Shop from "./src/pages/Shop/Shop";
 import ProductPage from "./src/pages/Shop/ProductPage";
+import KundliGenerator from "./src/pages/Kundli/KundliGenerator";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ const AppNavigator = () => {
         <Stack.Screen name="JyotishChat" component={JyotishChat} />
         <Stack.Screen name="Shop" component={Shop} />
         <Stack.Screen name="ProductPage" component={ProductPage} />
+        <Stack.Screen name="KundliGenerator" component={KundliGenerator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

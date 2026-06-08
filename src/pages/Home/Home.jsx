@@ -120,7 +120,7 @@ const FEATURES = [
     iconLib: "MaterialCommunityIcons",
     iconName: "chart-donut",
     label: "Kundli",
-    navigation: "Kundli",
+    navigation: "KundliGenerator",
     sub: "Birth Chart",
     accent: C.gold,
     bg: C.goldPale,
