@@ -110,7 +110,7 @@ const FEATURES = [
     iconLib: "Ionicons",
     iconName: "chatbubble-ellipses",
     label: "Chat & Call",
-    navigation: "ChatCall",
+    navigation: "Consultation",
     sub: "Live",
     accent: C.moon,
     bg: C.moonPale,

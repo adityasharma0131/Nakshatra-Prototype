@@ -4,6 +4,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./src/pages/Home/Home";
 import AIJyotish from "./src/pages/AiJyotish/Jyotish";
+import Consultation from "./src/pages/Consultation/Consultation";
+import JyotishProfile from "./src/pages/JyotishProfile/JyotishProfile";
+import JyotishChat from "./src/pages/Consultation/JyotishChat";
 
 const Stack = createNativeStackNavigator();
 
@@ -18,6 +21,9 @@ const AppNavigator = () => {
       >
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="AIJyotish" component={AIJyotish} />
+        <Stack.Screen name="Consultation" component={Consultation} />
+        <Stack.Screen name="JyotishProfile" component={JyotishProfile} />
+        <Stack.Screen name="JyotishChat" component={JyotishChat} />
       </Stack.Navigator>
     </NavigationContainer>
   );
