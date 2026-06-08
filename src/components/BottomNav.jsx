@@ -46,7 +46,7 @@ const TABS = [
   },
   {
     id: 2,
-    label: "AI",
+    label: "AI Jyotish",
     icon: "sparkles-outline",
     iconActive: "sparkles",
     accent: PURPLE,
@@ -177,11 +177,15 @@ function TabItem({ tab, isActive, onPress }) {
 
 // ─── BottomNav ────────────────────────────────────────────────────────────────
 
-export default function BottomNav({ activeTab = 0, onTabChange }) {
+export default function BottomNav({ activeTab = 0, onTabChange, navigation }) {
   const [active, setActive] = useState(activeTab);
   const insets = useSafeAreaInsets();
 
   const handlePress = (id) => {
+    if (id === 2) {
+      navigation?.navigate("AIJyotish");
+      return;
+    }
     setActive(id);
     onTabChange?.(id);
   };
@@ -198,7 +202,6 @@ export default function BottomNav({ activeTab = 0, onTabChange }) {
         },
       ]}
     >
-
       {TABS.map((tab) => (
         <TabItem
           key={tab.id}

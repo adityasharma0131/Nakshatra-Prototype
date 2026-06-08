@@ -39,7 +39,7 @@ import {
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import BottomNav from "../../components/BottomNav";
 
-const AVATAR_URL = "https://randomuser.me/api/portraits/men/32.jpg";
+const AVATAR_URL = "https://randomuser.me/api/portraits/men/1.jpg";
 const { width } = Dimensions.get("window");
 
 // ─── Design Tokens ──────────────────────────────────────────────────────────────
@@ -1419,7 +1419,7 @@ function PlainQuote({ fontsLoaded }) {
 }
 
 // ─── Main ───────────────────────────────────────────────────────────────────────
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const [fontsLoaded] = useFonts({
     CormorantGaramond_400Regular,
     CormorantGaramond_600SemiBold,
@@ -1475,7 +1475,7 @@ export default function HomeScreen() {
         <PlainQuote fontsLoaded={fontsLoaded} />
       </ScrollView>
 
-      <BottomNav fontsLoaded={fontsLoaded} />
+      <BottomNav fontsLoaded={fontsLoaded} navigation={navigation} />
     </View>
   );
 }
