@@ -30,6 +30,7 @@ import {
 } from "react-native";
 import NakshatraLogoImg from "../../../assets/ChatGPT Image Jun 7, 2026, 01_36_49 AM-Photoroom.png";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 import {
   useFonts,
   CormorantGaramond_400Regular,
@@ -99,6 +100,7 @@ const FEATURES = [
     iconLib: "MaterialCommunityIcons",
     iconName: "star-four-points",
     label: "AI Jyotish",
+    navigation: "AIJyotish",
     sub: "Vedic AI",
     accent: C.gold,
     bg: C.goldPale,
@@ -108,6 +110,7 @@ const FEATURES = [
     iconLib: "Ionicons",
     iconName: "chatbubble-ellipses",
     label: "Chat & Call",
+    navigation: "ChatCall",
     sub: "Live",
     accent: C.moon,
     bg: C.moonPale,
@@ -117,6 +120,7 @@ const FEATURES = [
     iconLib: "MaterialCommunityIcons",
     iconName: "chart-donut",
     label: "Kundli",
+    navigation: "Kundli",
     sub: "Birth Chart",
     accent: C.gold,
     bg: C.goldPale,
@@ -126,6 +130,7 @@ const FEATURES = [
     iconLib: "Ionicons",
     iconName: "calendar",
     label: "Panchang",
+    navigation: "Panchang",
     sub: "Almanac",
     accent: C.moon,
     bg: C.moonPale,
@@ -225,17 +230,19 @@ const PANCHANG = [
 
 const BANNERS = [
   {
-    tag: "✦  New Feature",
+    tag: "✦ New Feature",
     title: "AI Kundli\nAnalysis",
     sub: "Personalized Vedic reading in seconds",
     cta: "Try Free",
+    navigation: "AIJyotish",
     colors: ["#1A1060", "#3A30C0", "#6B5FE8"],
   },
   {
-    tag: "☽  Daily Insight",
+    tag: "☽ Daily Insight",
     title: "Today's\nNakshatra",
     sub: "Rohini — Favourable for new beginnings",
     cta: "Read More",
+    navigation: "Panchang",
     colors: ["#2A1400", "#7A4500", "#C47A10"],
   },
 ];
@@ -491,8 +498,16 @@ function TopNav({ fontsLoaded }) {
 }
 
 // ─── Banner Carousel ────────────────────────────────────────────────────────────
-function BannerCarousel({ fontsLoaded }) {
+
+function BannerCarousel({ fontsLoaded, navigation }) {
   const [active, setActive] = useState(0);
+
+  const handleBannerPress = (screen) => {
+    if (screen) {
+      navigation.navigate(screen);
+    }
+  };
+
   return (
     <View style={s.carouselWrap}>
       <ScrollView
@@ -504,98 +519,122 @@ function BannerCarousel({ fontsLoaded }) {
         }
       >
         {BANNERS.map((b, i) => (
-          <LinearGradient
+          <TouchableOpacity
             key={i}
-            colors={b.colors}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 1 }}
-            style={s.bannerCard}
+            activeOpacity={0.9}
+            onPress={() => handleBannerPress(b.navigation)}
           >
-            {/* Decorative orbs */}
-            <View
-              style={[
-                s.bannerOrb,
-                {
-                  width: 180,
-                  height: 180,
-                  top: -60,
-                  right: -50,
-                  opacity: 0.15,
-                },
-              ]}
-            />
-            <View
-              style={[
-                s.bannerOrb,
-                {
-                  width: 100,
-                  height: 100,
-                  bottom: -30,
-                  right: 90,
-                  opacity: 0.08,
-                },
-              ]}
-            />
-            <View
-              style={[
-                s.bannerOrb,
-                { width: 60, height: 60, top: 30, left: 30, opacity: 0.1 },
-              ]}
-            />
-            {/* Gold shimmer line */}
             <LinearGradient
-              colors={["transparent", "rgba(212,160,23,0.35)", "transparent"]}
+              colors={b.colors}
               start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={s.bannerShimmer}
-            />
-            <View style={s.bannerInner}>
-              <View style={s.bannerTagWrap}>
+              end={{ x: 1, y: 1 }}
+              style={s.bannerCard}
+            >
+              {/* Decorative orbs */}
+              <View
+                style={[
+                  s.bannerOrb,
+                  {
+                    width: 180,
+                    height: 180,
+                    top: -60,
+                    right: -50,
+                    opacity: 0.15,
+                  },
+                ]}
+              />
+
+              <View
+                style={[
+                  s.bannerOrb,
+                  {
+                    width: 100,
+                    height: 100,
+                    bottom: -30,
+                    right: 90,
+                    opacity: 0.08,
+                  },
+                ]}
+              />
+
+              <View
+                style={[
+                  s.bannerOrb,
+                  {
+                    width: 60,
+                    height: 60,
+                    top: 30,
+                    left: 30,
+                    opacity: 0.1,
+                  },
+                ]}
+              />
+
+              {/* Gold shimmer line */}
+              <LinearGradient
+                colors={["transparent", "rgba(212,160,23,0.35)", "transparent"]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={s.bannerShimmer}
+              />
+
+              <View style={s.bannerInner}>
+                <View style={s.bannerTagWrap}>
+                  <Text
+                    style={[
+                      s.bannerTag,
+                      fontsLoaded && { fontFamily: SERIF.semiBold },
+                    ]}
+                  >
+                    {b.tag}
+                  </Text>
+                </View>
+
                 <Text
                   style={[
-                    s.bannerTag,
-                    fontsLoaded && { fontFamily: SERIF.semiBold },
+                    s.bannerTitle,
+                    fontsLoaded && { fontFamily: SERIF.bold },
                   ]}
                 >
-                  {b.tag}
+                  {b.title}
                 </Text>
+
+                <Text
+                  style={[
+                    s.bannerSub,
+                    fontsLoaded && { fontFamily: SERIF.regular },
+                  ]}
+                >
+                  {b.sub}
+                </Text>
+
+                <TouchableOpacity
+                  style={s.bannerCta}
+                  activeOpacity={0.85}
+                  onPress={() => handleBannerPress(b.navigation)}
+                >
+                  <Text
+                    style={[
+                      s.bannerCtaTxt,
+                      fontsLoaded && { fontFamily: SERIF.semiBold },
+                    ]}
+                  >
+                    {b.cta}
+                  </Text>
+
+                  <Ionicons
+                    name="arrow-forward"
+                    size={13}
+                    color="#FFF"
+                    style={{ marginLeft: 5 }}
+                  />
+                </TouchableOpacity>
               </View>
-              <Text
-                style={[
-                  s.bannerTitle,
-                  fontsLoaded && { fontFamily: SERIF.bold },
-                ]}
-              >
-                {b.title}
-              </Text>
-              <Text
-                style={[
-                  s.bannerSub,
-                  fontsLoaded && { fontFamily: SERIF.regular },
-                ]}
-              >
-                {b.sub}
-              </Text>
-              <TouchableOpacity style={s.bannerCta} activeOpacity={0.85}>
-                <Text
-                  style={[
-                    s.bannerCtaTxt,
-                    fontsLoaded && { fontFamily: SERIF.semiBold },
-                  ]}
-                >
-                  {b.cta}
-                </Text>
-                <Ionicons
-                  name="arrow-forward"
-                  size={13}
-                  color="#FFF"
-                  style={{ marginLeft: 5 }}
-                />
-              </TouchableOpacity>
-            </View>
-          </LinearGradient>
+            </LinearGradient>
+          </TouchableOpacity>
         ))}
       </ScrollView>
+
       <View style={s.dots}>
         {BANNERS.map((_, i) => (
           <View key={i} style={[s.dot, active === i && s.dotActive]} />
@@ -604,7 +643,6 @@ function BannerCarousel({ fontsLoaded }) {
     </View>
   );
 }
-
 // ─── Panchang Bar ───────────────────────────────────────────────────────────────
 function PanchangBar({ fontsLoaded }) {
   return (
@@ -734,8 +772,17 @@ function SecHeader({ title, sub, onAll, fontsLoaded }) {
 }
 
 // ─── Feature Grid ───────────────────────────────────────────────────────────────
+
 function FeatCard({ item, fontsLoaded, cardWidth }) {
+  const navigation = useNavigation();
   const sc = useRef(new Animated.Value(1)).current;
+
+  const handlePress = () => {
+    if (item.navigation) {
+      navigation.navigate(item.navigation);
+    }
+  };
+
   return (
     <Animated.View
       style={{
@@ -748,6 +795,7 @@ function FeatCard({ item, fontsLoaded, cardWidth }) {
       <TouchableOpacity
         style={{ alignItems: "center", width: "100%" }}
         activeOpacity={1}
+        onPress={handlePress}
         onPressIn={() =>
           Animated.spring(sc, {
             toValue: 0.9,
@@ -766,7 +814,10 @@ function FeatCard({ item, fontsLoaded, cardWidth }) {
         <View
           style={[
             s.featIconWrap,
-            { backgroundColor: item.bg, borderColor: item.accent + "35" },
+            {
+              backgroundColor: item.bg,
+              borderColor: item.accent + "35",
+            },
           ]}
         >
           <Icon
@@ -776,6 +827,7 @@ function FeatCard({ item, fontsLoaded, cardWidth }) {
             color={item.accent}
           />
         </View>
+
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
@@ -783,6 +835,7 @@ function FeatCard({ item, fontsLoaded, cardWidth }) {
         >
           {item.label}
         </Text>
+
         <Text
           numberOfLines={1}
           ellipsizeMode="tail"
@@ -794,7 +847,6 @@ function FeatCard({ item, fontsLoaded, cardWidth }) {
     </Animated.View>
   );
 }
-
 // ─── Rashi Strip ────────────────────────────────────────────────────────────────
 function RashiStrip({ fontsLoaded }) {
   const [activeRashi, setActiveRashi] = useState(4);
@@ -1434,10 +1486,9 @@ export default function HomeScreen({ navigation }) {
       <TopNav fontsLoaded={fontsLoaded} />
 
       <ScrollView style={s.scroll} showsVerticalScrollIndicator={false}>
-        <BannerCarousel fontsLoaded={fontsLoaded} />
+        <BannerCarousel fontsLoaded={fontsLoaded} navigation={navigation} />
         <PanchangBar fontsLoaded={fontsLoaded} />
         <AIInsightStrip fontsLoaded={fontsLoaded} />
-
         {/* Explore Grid */}
         <SecHeader
           title="Explore"
@@ -1454,10 +1505,8 @@ export default function HomeScreen({ navigation }) {
             />
           ))}
         </View>
-
         <RashiStrip fontsLoaded={fontsLoaded} />
         <PromoBanner fontsLoaded={fontsLoaded} />
-
         <SecHeader
           title="Top Astrologers"
           sub="Available now"
@@ -1467,7 +1516,6 @@ export default function HomeScreen({ navigation }) {
         {ASTROLOGERS.map((a, i) => (
           <AstroCard key={i} a={a} fontsLoaded={fontsLoaded} />
         ))}
-
         <MuhurtaSection fontsLoaded={fontsLoaded} />
         <RemediesSection fontsLoaded={fontsLoaded} />
         <CoursesSection fontsLoaded={fontsLoaded} />
@@ -1501,8 +1549,8 @@ const s = StyleSheet.create({
     backgroundColor: C.divider,
     marginHorizontal: 2,
   },
-  navGreet: { fontSize: 11, color: C.inkMuted, letterSpacing: 0.5 },
-  navUser: { fontSize: 17, color: C.ink, marginTop: 1 },
+  navGreet: { fontSize: 13, color: C.inkMuted, letterSpacing: 0.5 },
+  navUser: { fontSize: 20, color: C.ink, marginTop: 1 },
   navRight: { flexDirection: "row", alignItems: "center", gap: 10 },
 
   logoImg: {
@@ -1755,13 +1803,13 @@ const s = StyleSheet.create({
     elevation: 3,
   },
   featLabel: {
-    fontSize: 10,
+    fontSize: 15,
     color: C.ink,
     textAlign: "center",
     paddingHorizontal: 2,
   },
   featSub: {
-    fontSize: 9,
+    fontSize: 12,
     color: C.inkMuted,
     textAlign: "center",
     marginTop: 1,
