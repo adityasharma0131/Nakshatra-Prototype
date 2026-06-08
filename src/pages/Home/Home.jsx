@@ -185,6 +185,7 @@ const FEATURES = [
     iconLib: "Ionicons",
     iconName: "storefront",
     label: "Shop",
+    navigation: "Shop",
     sub: "Store",
     accent: C.moon,
     bg: C.moonPale,
