@@ -158,6 +158,7 @@ const FEATURES = [
   {
     id: 7,
     iconLib: "MaterialCommunityIcons",
+    navigation: "ScriptureLibrary",
     iconName: "script-text-outline",
     label: "Scriptures",
     sub: "Books",
