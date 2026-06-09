@@ -167,6 +167,7 @@ const FEATURES = [
     iconLib: "Ionicons",
     iconName: "people",
     label: "Community",
+    navigation: "CommunityHub",
     sub: "Social",
     accent: C.moon,
     bg: C.moonPale,

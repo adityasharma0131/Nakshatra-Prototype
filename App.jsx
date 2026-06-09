@@ -10,6 +10,7 @@ import JyotishChat from "./src/pages/Consultation/JyotishChat";
 import Shop from "./src/pages/Shop/Shop";
 import ProductPage from "./src/pages/Shop/ProductPage";
 import KundliGenerator from "./src/pages/Kundli/KundliGenerator";
+import CommunityHub from "./src/pages/CommunityHub/CommunityHub";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,6 +31,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Shop" component={Shop} />
         <Stack.Screen name="ProductPage" component={ProductPage} />
         <Stack.Screen name="KundliGenerator" component={KundliGenerator} />
+        <Stack.Screen name="CommunityHub" component={CommunityHub} />
       </Stack.Navigator>
     </NavigationContainer>
   );
