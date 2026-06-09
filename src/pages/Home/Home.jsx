@@ -178,6 +178,7 @@ const FEATURES = [
     id: 9,
     iconLib: "Ionicons",
     iconName: "airplane",
+    navigation: "SpiritualTravel",
     label: "Travel",
     sub: "Sacred",
     accent: C.gold,

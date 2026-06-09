@@ -15,6 +15,7 @@ import Panchang from "./src/pages/Panchang/Panchang";
 import Calendar from "./src/pages/Panchang/Calendar";
 import Yoga from "./src/pages/Yoga/Yoga";
 import SpiritualLearning from "./src/pages/SpiritualLearning/SpiritualLearning";
+import SpiritualTravel from "./src/pages/SpiritualTravel/SpiritualTravel";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Calendar" component={Calendar} />
         <Stack.Screen name="Yoga" component={Yoga} />
         <Stack.Screen name="SpiritualLearning" component={SpiritualLearning} />
+        <Stack.Screen name="SpiritualTravel" component={SpiritualTravel} />
       </Stack.Navigator>
     </NavigationContainer>
   );
