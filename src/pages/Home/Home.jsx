@@ -150,6 +150,7 @@ const FEATURES = [
     iconLib: "Ionicons",
     iconName: "book",
     label: "Learn",
+    navigation: "SpiritualLearning",
     sub: "Courses",
     accent: C.moon,
     bg: C.moonPale,

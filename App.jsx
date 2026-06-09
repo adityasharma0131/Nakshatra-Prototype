@@ -14,6 +14,7 @@ import CommunityHub from "./src/pages/CommunityHub/CommunityHub";
 import Panchang from "./src/pages/Panchang/Panchang";
 import Calendar from "./src/pages/Panchang/Calendar";
 import Yoga from "./src/pages/Yoga/Yoga";
+import SpiritualLearning from "./src/pages/SpiritualLearning/SpiritualLearning";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Panchang" component={Panchang} />
         <Stack.Screen name="Calendar" component={Calendar} />
         <Stack.Screen name="Yoga" component={Yoga} />
+        <Stack.Screen name="SpiritualLearning" component={SpiritualLearning} />
       </Stack.Navigator>
     </NavigationContainer>
   );
