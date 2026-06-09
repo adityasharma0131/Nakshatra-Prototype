@@ -31,6 +31,7 @@ const TABS = [
   {
     id: 0,
     label: "Home",
+    screen: "Home",
     icon: "home-outline",
     iconActive: "home",
     accent: GOLD,
@@ -39,6 +40,7 @@ const TABS = [
   {
     id: 1,
     label: "Kundli",
+    screen: "KundliGenerator",
     icon: "moon-outline",
     iconActive: "moon",
     accent: GOLD,
@@ -47,6 +49,7 @@ const TABS = [
   {
     id: 2,
     label: "AI Jyotish",
+    screen: "AIJyotish",
     icon: "sparkles-outline",
     iconActive: "sparkles",
     accent: PURPLE,
@@ -55,6 +58,7 @@ const TABS = [
   {
     id: 3,
     label: "Learn",
+    screen: "SpiritualLearning",
     icon: "book-outline",
     iconActive: "book",
     accent: GOLD,
@@ -63,13 +67,13 @@ const TABS = [
   {
     id: 4,
     label: "Profile",
+    screen: "Profile",
     icon: "person-outline",
     iconActive: "person",
     accent: GOLD,
     glowColor: "rgba(212,160,23,0.14)",
   },
 ];
-
 // ─── Tab Item ─────────────────────────────────────────────────────────────────
 
 function TabItem({ tab, isActive, onPress }) {
@@ -180,14 +184,14 @@ function TabItem({ tab, isActive, onPress }) {
 export default function BottomNav({ activeTab = 0, onTabChange, navigation }) {
   const [active, setActive] = useState(activeTab);
   const insets = useSafeAreaInsets();
+  const handlePress = (tab) => {
+    setActive(tab.id);
 
-  const handlePress = (id) => {
-    if (id === 2) {
-      navigation?.navigate("AIJyotish");
-      return;
+    if (navigation && tab.screen) {
+      navigation.navigate(tab.screen);
     }
-    setActive(id);
-    onTabChange?.(id);
+
+    onTabChange?.(tab.id);
   };
 
   return (
@@ -207,7 +211,7 @@ export default function BottomNav({ activeTab = 0, onTabChange, navigation }) {
           key={tab.id}
           tab={tab}
           isActive={active === tab.id}
-          onPress={() => handlePress(tab.id)}
+          onPress={() => handlePress(tab)}
         />
       ))}
     </View>

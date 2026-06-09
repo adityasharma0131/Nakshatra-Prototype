@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./src/pages/Home/Home";
+import Profile from "./src/pages/Profile/Profile";
 import AIJyotish from "./src/pages/AiJyotish/Jyotish";
 import Consultation from "./src/pages/Consultation/Consultation";
 import JyotishProfile from "./src/pages/JyotishProfile/JyotishProfile";
@@ -31,6 +32,7 @@ const AppNavigator = () => {
         }}
       >
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Profile" component={Profile} />
         <Stack.Screen name="AIJyotish" component={AIJyotish} />
         <Stack.Screen name="Consultation" component={Consultation} />
         <Stack.Screen name="JyotishProfile" component={JyotishProfile} />
