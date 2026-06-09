@@ -139,6 +139,7 @@ const FEATURES = [
     id: 5,
     iconLib: "MaterialCommunityIcons",
     iconName: "yoga",
+    navigation: "Yoga",
     label: "Yoga",
     sub: "Spiritual",
     accent: C.gold,

@@ -13,6 +13,7 @@ import KundliGenerator from "./src/pages/Kundli/KundliGenerator";
 import CommunityHub from "./src/pages/CommunityHub/CommunityHub";
 import Panchang from "./src/pages/Panchang/Panchang";
 import Calendar from "./src/pages/Panchang/Calendar";
+import Yoga from "./src/pages/Yoga/Yoga";
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,7 @@ const AppNavigator = () => {
         <Stack.Screen name="CommunityHub" component={CommunityHub} />
         <Stack.Screen name="Panchang" component={Panchang} />
         <Stack.Screen name="Calendar" component={Calendar} />
+        <Stack.Screen name="Yoga" component={Yoga} />
       </Stack.Navigator>
     </NavigationContainer>
   );
