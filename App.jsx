@@ -11,6 +11,8 @@ import Shop from "./src/pages/Shop/Shop";
 import ProductPage from "./src/pages/Shop/ProductPage";
 import KundliGenerator from "./src/pages/Kundli/KundliGenerator";
 import CommunityHub from "./src/pages/CommunityHub/CommunityHub";
+import Panchang from "./src/pages/Panchang/Panchang";
+import Calendar from "./src/pages/Panchang/Calendar";
 
 const Stack = createNativeStackNavigator();
 
@@ -32,6 +34,8 @@ const AppNavigator = () => {
         <Stack.Screen name="ProductPage" component={ProductPage} />
         <Stack.Screen name="KundliGenerator" component={KundliGenerator} />
         <Stack.Screen name="CommunityHub" component={CommunityHub} />
+        <Stack.Screen name="Panchang" component={Panchang} />
+        <Stack.Screen name="Calendar" component={Calendar} />
       </Stack.Navigator>
     </NavigationContainer>
   );
